@@ -37,7 +37,7 @@ def test_foreign_city():
 @allure.feature("READ")
 @allure.severity("normal")
 def test_get_data_last_week():
-    resp = requests.get(base_url+'price_matrix?origin_iata=LED&destination_iata=UFA&depart_start=2025-04-15&depart_range=6&affiliate=false&market=ru').json()
+    resp = requests.get(base_url+'price_matrix?origin_iata=LED&destination_iata=UFA&depart_start=2025-04-10&depart_range=6&affiliate=false&market=ru').json()
 
     with allure.step("Проверяем, что вернулся ненулевой список"):
         assert len(resp["prices"]) > 0

@@ -98,9 +98,9 @@ def test_name_output_city(driver, creds):
 def test_price(driver):
         object_ui = Object_ui(driver)
         object_ui.accept_cookie()
-        object_ui.set_output_place("Новосибирск")
         object_ui.set_input_place("Москва")
         object_ui.set_data("25.04.2025")
+        object_ui.set_output_place("Novosib")
         object_ui.push_button()
 
         with allure.step("Проверяем появление планки с сообщением об ошибке"):
