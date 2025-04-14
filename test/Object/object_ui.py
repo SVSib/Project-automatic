@@ -4,7 +4,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webdriver import WebDriver
 
 
-
 class Object_ui:
     def __init__(self, driver: WebDriver):
         self._driver = driver
@@ -42,10 +41,10 @@ class Object_ui:
         origin.send_keys(city)
         WebDriverWait(self._driver, 5, 0.1).until_not(
             EC.presence_of_element_located((By.CSS_SELECTOR,
-                                        ".s__hozqdl8_u1owv7f58Vov.s__HLWgkBC9TdsHSs4C7GgX.s__gDc4YpDycxEWC7xpbnPU.s__DoMPFi0pOpdxJqqqv6_1")))
+                                            ".s__hozqdl8_u1owv7f58Vov.s__HLWgkBC9TdsHSs4C7GgX.s__gDc4YpDycxEWC7xpbnPU.s__DoMPFi0pOpdxJqqqv6_1")))
         WebDriverWait(self._driver, 20, 0.1).until(
             EC.presence_of_element_located((By.XPATH,
-                                            "//li[@id='avia_form_origin-item-0']//div[@class='s__PFpXoB8Er78MFmktO032']"))).click() # ожидание появления выпадающего списка
+                                            "//li[@id='avia_form_origin-item-0']//div[@class='s__PFpXoB8Er78MFmktO032']"))).click()
 
     def set_data(self, day):
         """
@@ -54,7 +53,7 @@ class Object_ui:
         cal = self._driver.find_element(By.CSS_SELECTOR, ".s__baueeRnAUu_J55n12MRS.s__CD4LiXCcZBHrt3JgeEqI.s__QOH8_RMDyCm4BxeyrqOt")
         cal.click()
         self._driver.implicitly_wait(5)
-        data = self._driver.find_element(By.CSS_SELECTOR,f"[data-test-id='date-{day}']")
+        data = self._driver.find_element(By.CSS_SELECTOR, f"[data-test-id='date-{day}']")
         data.click()
 
     def push_button(self):
@@ -69,16 +68,14 @@ class Object_ui:
         """
                 Ожидание планки обязательного поля
         """
-        bar = WebDriverWait(self._driver, 30).until(EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, ".s__jLthuOOSZixeExVBMy_w.s__XKZOSKNzU20ugFQrJnJ_.s__mKolDTwVaUL0fYyF_xuI"))).text
+        bar = WebDriverWait(self._driver, 30).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".s__jLthuOOSZixeExVBMy_w.s__XKZOSKNzU20ugFQrJnJ_.s__mKolDTwVaUL0fYyF_xuI"))).text
         return bar
 
     def get_city_name(self, place):
         """
                 Получение названия города
         """
-        res = self._driver.find_element(By.CSS_SELECTOR,
-                                             f"#avia_form_{place}-input").get_attribute("Value")
+        res = self._driver.find_element(By.CSS_SELECTOR, f"#avia_form_{place}-input").get_attribute("Value")
         return res
 
     def get_price(self):

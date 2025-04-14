@@ -62,7 +62,6 @@ def test_name_input_city(driver, creds):
     with allure.step("Заполняем поля 'Куда'"):
         object_ui.set_input_place(city)
 
-
     with allure.step("Проверяем появление всплывающего окна и автовыбор первого результата"):
         assert object_ui.get_city_name("destination") == "Москва"
 
@@ -87,21 +86,21 @@ def test_name_output_city(driver, creds):
     with allure.step("Заполняем поля 'Откуда'"):
         object_ui.set_output_place(city)
 
-
     with allure.step("Проверяем появление всплывающего окна и автовыбор первого результата"):
         assert object_ui.get_city_name("origin") == "Новосибирск"
+
 
 @allure.title("Проверка кнопки 'Найти билеты'")
 @allure.description("Возвращает количество доступных билетов")
 @allure.feature("READ")
 @allure.severity("critical")
-def test_price(driver):
-        object_ui = Object_ui(driver)
-        object_ui.accept_cookie()
-        object_ui.set_input_place("Москва")
-        object_ui.set_data("25.04.2025")
-        object_ui.set_output_place("Novosib")
-        object_ui.push_button()
+def test_get_price(driver):
+    object_ui = Object_ui(driver)
+    object_ui.accept_cookie()
+    object_ui.set_input_place("Москва")
+    object_ui.set_data("25.04.2025")
+    object_ui.set_output_place("Novosib")
+    object_ui.push_button()
 
-        with allure.step("Проверяем появление планки с сообщением об ошибке"):
-            assert object_ui.get_price() > 0
+    with allure.step("Проверяем появление планки с сообщением об ошибке"):
+        assert object_ui.get_price() > 0
